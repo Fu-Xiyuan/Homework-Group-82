@@ -162,7 +162,7 @@ def hash_msg(msg):
     return result
 
 
-def str2byte(msg): 
+def str2byte(msg):  # 字符串转换成byte数组
     ml = len(msg)
     msg_byte = []
     msg_bytearray = msg.encode('utf-8')
@@ -171,7 +171,7 @@ def str2byte(msg):
     return msg_byte
 
 
-def byte2str(msg): 
+def byte2str(msg):  # byte数组转字符串
     ml = len(msg)
     str1 = b""
     for i in range(ml):
@@ -179,7 +179,7 @@ def byte2str(msg):
     return str1.decode('utf-8')
 
 
-def hex2byte(msg): 
+def hex2byte(msg):  # 16进制字符串转换成byte数组
     ml = len(msg)
     if ml % 2 != 0:
         msg = '0' + msg
@@ -190,7 +190,7 @@ def hex2byte(msg):
     return msg_byte
 
 
-def byte2hex(msg): 
+def byte2hex(msg):  # byte数组转换成16进制字符串
     ml = len(msg)
     hexstr = ""
     for i in range(ml):
@@ -198,7 +198,7 @@ def byte2hex(msg):
     return hexstr
 
 
-def Hash_sm3(msg, Hexstr=0):
+def sm3(msg, Hexstr=0):
     if (Hexstr):
         msg_byte = hex2byte(msg)
     else:
@@ -206,7 +206,7 @@ def Hash_sm3(msg, Hexstr=0):
     return hash_msg(msg_byte)
 
 
-def KDF(Z, klen): 
+def KDF(Z, klen):  # Z为16进制表示的比特串（str），klen为密钥长度（单位byte）
     klen = int(klen)
     ct = 0x00000001
     rcnt = ceil(klen / 32)
